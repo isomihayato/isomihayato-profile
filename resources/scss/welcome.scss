@@ -1,75 +1,742 @@
-@use "variables" as vars;
+$bg: #010800;
+$panel: #031003;
+$green: #69ff4f;
+$dim: #69ff4f;
+$line: #69ff4f;
+$mono: "Courier New", "SFMono-Regular", monospace;
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
 body {
-    font-family: vars.$base-font-famility;
+    margin: 0;
 }
-.header {
-    align-items: center;
-    background-color: vars.$menu-bg-color;
-    height: 60px;
-    padding: 10px 32px;
-    &__logo {
-        flex: 1;
-    }
-    &__menu {
-        // 要件：ヘッダーのアウターとしてのUI責任まで
-        flex: 4;
-        h1 {
-            vertical-align: middle;
-        }
-    }
-    &__btn {
-        flex: 1;
-    }
+a {
+    color: inherit;
+    text-decoration: none;
+}
+button,
+input,
+textarea {
+    font: inherit;
 }
 
-p,
-li {
-    color: vars.$text-color;
+main {
+    background: $bg;
+    color: $dim;
+    font-family: $mono;
+    font-size: 15px;
+    line-height: 1.75;
+    min-height: 100vh;
+    text-shadow: 0 0 7px rgba(105, 255, 79, 0.2);
 }
-code {
-    &::before {
-        color: vars.$prompt-color;
-        content: "vars.$ ";
-    }
+main::before {
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.22) 0,
+        rgba(0, 0, 0, 0.22) 1px,
+        transparent 1px,
+        transparent 4px
+    );
+    content: "";
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: 99;
 }
-label {
-    color: vars.$prompt-color;
+.site::after {
+    background: radial-gradient(
+        ellipse at center,
+        transparent 45%,
+        rgba(0, 0, 0, 0.68) 100%
+    );
+    content: "";
+    inset: 0;
+    pointer-events: none;
+    position: fixed;
+    z-index: 98;
 }
-h1,
-h2,
-h3 {
-    color: vars.$h-color;
-    font-weight: bold;
+.terminal-command {
+    color: $dim;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    margin: 0 0 1rem;
 }
-.flex {
+.button {
+    align-items: center;
+    background: transparent;
+    border: 1px solid $green;
+    color: $green;
+    display: inline-flex;
+    font-weight: 700;
+    justify-content: center;
+    min-height: 50px;
+    padding: 0.7rem 1.5rem;
+}
+.button:hover,
+.button:focus-visible {
+    background: $green;
+    color: $bg;
+    outline: 0;
+    text-shadow: none;
+}
+.button--terminal {
+    min-width: 155px;
+}
+.button--dark,
+.button--outline,
+.button--accent {
+    border-color: $green;
+    color: $green;
+}
+
+.header {
+    align-items: stretch;
+    background: rgba(1, 8, 0, 0.96);
+    border-bottom: 1px solid $line;
+    display: flex;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+.header__logo {
+    align-items: center;
+    color: $green;
+    display: flex;
+    flex: 1;
+    font-size: 1.05rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    padding: 0 2rem;
+}
+.header__nav {
+    align-items: stretch;
     display: flex;
 }
-.fill-button {
-    background-color: vars.$prompt-color;
-    padding: 10px 18px;
-    text-decoration: none;
-    font-size: 1rem;
+.header__link {
+    align-items: center;
+    color: $dim;
+    display: flex;
+    font-size: 0.9rem;
+    justify-content: center;
+    padding: 0 1rem;
+}
+.header__link:hover {
+    color: $green;
+}
+.header__link--accent {
+    align-self: center;
+    background: $green;
+    color: $bg;
+    height: 38px;
+    margin: 0 2rem;
+    padding-inline: 1.3rem;
+}
+.header__link--accent:hover {
+    box-shadow: 0 0 16px rgba(105, 255, 79, 0.45);
+    color: $bg;
+}
+.header__toggle {
+    display: none;
+}
+
+.hero,
+.section {
+    border-bottom: 1px solid $line;
+    margin: 0 auto;
+    max-width: 1040px;
+    padding: clamp(5rem, 10vw, 8rem) 0;
+    width: calc(100% - 3rem);
+}
+.hero {
+    min-height: 720px;
+}
+.hero__main {
+    max-width: 700px;
+}
+.hero__title {
+    color: $green;
+    font-family: $mono;
+    font-size: clamp(4rem, 10vw, 7.5rem);
     letter-spacing: 0.08em;
-    height: fit-content;
+    line-height: 1.05;
+    margin: 1.5rem 0 2.8rem;
+    text-shadow: 0 0 15px rgba(105, 255, 79, 0.4);
+}
+.hero__profile {
+    margin-bottom: 2rem;
+}
+.hero__details {
+    margin: 0;
+}
+.hero__details div {
+    display: flex;
+    gap: 0.7rem;
+}
+.hero__details dt {
+    color: $green;
+    font-weight: 700;
+}
+.hero__details dd {
+    margin: 0;
+}
+.hero__details mark {
+    background: $green;
+    color: $bg;
+    padding: 0 0.35rem;
+}
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
 }
 
-.bottom-hr {
-    // 要件：セクションとしてのpaddingと底のhr
+.section__heading {
+    border-bottom: 1px solid $line;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.2rem;
 }
-.code {
-    // 要件：タイトル上コードspanUI
+.section__title {
+    color: $green;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    line-height: 1.15;
+    margin: 0;
+}
+.section--dark,
+.contact {
+    background: transparent;
+    color: $dim;
 }
 
-// リスト関係
-.program-list {
-    // 要件：プログラムコンソールの見た目なリスト。UI特化
+.experience {
+    display: block;
 }
-.faq-item {
-    // 要件：faqリストアイテムのUI特化。
+.experience__grid {
+    display: grid;
+}
+.experience__card {
+    align-items: center;
+    border-bottom: 1px solid rgba(105, 255, 79, 0.1);
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 280px 1fr;
+    min-height: 66px;
+    padding: 0.8rem 0;
+}
+.experience__card--dark,
+.experience__card--accent {
+    background: transparent;
+    color: inherit;
+}
+.experience__meta {
+    color: $green;
+    display: grid;
+    font-size: 0.72rem;
+    font-weight: 700;
+    grid-template-columns: 1fr 50px;
+    letter-spacing: 0.1em;
+}
+.experience__meta strong {
+    color: $dim;
+    font-size: 0.75rem;
+}
+.experience__card p {
+    font-size: 0.76rem;
+    margin: 0;
 }
 
-// ドロップダウン
-.dropdown {
-    // 要件：ドロップダウン機能UI補助
+.skills__grid {
+    display: grid;
+    gap: 2rem 4rem;
+    grid-template-columns: 1fr 1fr;
+}
+.skills__group {
+    border-bottom: 1px solid rgba(105, 255, 79, 0.09);
+    padding-bottom: 1.5rem;
+}
+.skills__category {
+    color: $green;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    margin: 0 0 1rem;
+}
+.skills__category::before {
+    color: $dim;
+    content: "drwxr-xr-x  ";
+    font-weight: 400;
+}
+.skills__category::after {
+    content: "/";
+}
+.skills__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.skills__item {
+    border: 1px solid $dim;
+    color: $green;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.3rem 0.65rem;
+}
+
+.works__list {
+    margin-top: 1.5rem;
+}
+.works__item {
+    align-items: center;
+    border-bottom: 1px solid rgba(105, 255, 79, 0.08);
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 64px 1fr 80px 160px;
+    min-height: 82px;
+}
+.works__item--accent,
+.works__item--dark {
+    background: transparent;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+}
+.works__number {
+    font-size: 0.7rem;
+}
+.works__number::before {
+    content: "[";
+}
+.works__number::after {
+    content: "]";
+}
+.works__title {
+    color: $green;
+    font-size: 0.92rem;
+    font-weight: 700;
+    margin: 0;
+}
+.works__description,
+.works__year {
+    font-size: 0.68rem;
+    margin: 0;
+}
+.works__result {
+    border: 1px solid $dim;
+    color: $green;
+    font-size: 0.7rem;
+    font-weight: 700;
+    justify-self: stretch;
+    padding: 0.2rem 0.6rem;
+    text-align: right;
+}
+
+.pricing__grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 1.5rem;
+    position: relative;
+}
+.pricing__grid::before {
+    color: $green;
+    content: "{";
+    font-size: 1.5rem;
+    left: -1.5rem;
+    position: absolute;
+    top: -2.5rem;
+}
+.pricing__grid::after {
+    bottom: -2.5rem;
+    color: $green;
+    content: "}";
+    font-size: 1.5rem;
+    left: -1.5rem;
+    position: absolute;
+}
+.pricing__card {
+    border: 1px solid $dim;
+    display: flex;
+    flex-direction: column;
+    min-height: 390px;
+    padding: 1.5rem;
+    position: relative;
+}
+.pricing__card--accent {
+    background: rgba(105, 255, 79, 0.06);
+    border-color: $green;
+    color: inherit;
+}
+.pricing__badge {
+    background: $green;
+    color: $bg;
+    font-size: 0.58rem;
+    padding: 0.15rem 0.6rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.pricing__name {
+    color: $green;
+    font-weight: 700;
+    margin: 0;
+}
+.pricing__name::before,
+.pricing__name::after {
+    content: '"';
+}
+.pricing__price {
+    color: $green;
+    font-size: 1.7rem;
+    margin: 1.5rem 0 0.5rem;
+}
+.pricing__lead {
+    font-size: 0.72rem;
+}
+.pricing__features {
+    flex: 1;
+    list-style: none;
+    padding: 0;
+}
+.pricing__features li {
+    font-size: 0.72rem;
+    margin: 0.45rem 0;
+}
+.pricing__features li::before {
+    color: $green;
+    content: "+ ";
+}
+
+.testimonials__grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+.testimonials__card {
+    border: 1px solid $dim;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    min-height: 260px;
+    padding: 1.3rem;
+}
+.testimonials__card::before {
+    color: $dim;
+    content: "$ tail -1 reviews.log";
+    font-size: 0.65rem;
+    margin-bottom: 1.5rem;
+}
+.testimonials__stars {
+    color: $green;
+    order: 3;
+}
+.testimonials__card blockquote {
+    color: $green;
+    flex: 1;
+    font-size: 0.82rem;
+    margin: 0 0 1rem;
+}
+.testimonials__card figcaption {
+    font-size: 0.7rem;
+}
+
+.process__list {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+}
+.process__item {
+    align-items: start;
+    border-bottom: 1px solid rgba(105, 255, 79, 0.1);
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 55px 1fr;
+    padding: 1.2rem 0;
+    position: relative;
+}
+.process__item:not(:last-child)::after {
+    bottom: -1rem;
+    color: $green;
+    content: "↓";
+    left: 1rem;
+    position: absolute;
+    z-index: 1;
+}
+.process__number {
+    color: $green;
+    font-size: 1rem;
+}
+.process__label {
+    color: $green;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    margin: 0;
+}
+.process__title {
+    display: inline;
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin: 0;
+}
+.process__description {
+    font-size: 0.7rem;
+    margin: 0.35rem 0 0;
+}
+
+.faq__list {
+    border-top: 1px solid $line;
+}
+.faq__item {
+    border-bottom: 1px solid $line;
+}
+.faq__question {
+    background: transparent;
+    border: 0;
+    color: $green;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    padding: 1.2rem 0;
+    text-align: left;
+    width: 100%;
+}
+.faq__question span:first-child::before {
+    content: "> ";
+}
+.faq__icon {
+    margin-left: auto;
+}
+.faq__item--open .faq__icon {
+    transform: rotate(45deg);
+}
+.faq__answer {
+    padding: 0 1.5rem 1.2rem;
+}
+.faq__answer p {
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+.blog__list {
+    margin-top: 1rem;
+}
+.blog__item {
+    border-bottom: 1px solid rgba(105, 255, 79, 0.1);
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 45px 110px 1fr auto;
+    padding: 1rem 0;
+}
+.blog__item:hover {
+    color: $green;
+}
+.blog__number,
+.blog__tag,
+.blog__date {
+    font-size: 0.68rem;
+}
+.blog__title {
+    color: $green;
+    font-size: 0.8rem;
+}
+
+.contact {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: 1fr 1fr;
+}
+.contact__lead {
+    font-size: 0.76rem;
+}
+.contact__details {
+    margin-top: 2rem;
+}
+.contact__details div {
+    display: flex;
+    gap: 0.8rem;
+}
+.contact__details dt {
+    color: $green;
+}
+.contact__details dd {
+    margin: 0;
+}
+.contact__form {
+    display: grid;
+    gap: 1.2rem;
+}
+.contact__field {
+    color: $dim;
+    display: grid;
+    font-size: 0.7rem;
+    gap: 0.25rem;
+}
+.contact__field > span::before {
+    content: "// ";
+}
+.contact__input {
+    background: rgba(105, 255, 79, 0.025);
+    border: 1px solid $dim;
+    border-radius: 0;
+    color: $green;
+    min-height: 42px;
+    outline: 0;
+    padding: 0.6rem;
+}
+.contact__input:focus {
+    border-color: $green;
+    box-shadow: 0 0 10px rgba(105, 255, 79, 0.15);
+}
+.contact__input--textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+.contact__submit {
+    justify-self: start;
+}
+
+.footer {
+    align-items: center;
+    border-top: 1px solid $line;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1040px;
+    min-height: 32px;
+    width: calc(100% - 3rem);
+}
+.footer__logo {
+    color: $green;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+.footer__copyright {
+    font-size: 0.65rem;
+}
+
+@media (max-width: 800px) {
+    .header__toggle {
+        align-items: center;
+        background: transparent;
+        border: 0;
+        color: $green;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 1.2rem;
+    }
+    .header__toggle-line {
+        background: $green;
+        display: block;
+        height: 1px;
+        margin: 3px;
+        width: 24px;
+    }
+    .header__toggle-label {
+        font-size: 0.5rem;
+    }
+    .header__nav {
+        background: $bg;
+        border-bottom: 1px solid $line;
+        display: none;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 64px;
+    }
+    .header__nav--open {
+        display: grid;
+    }
+    .header__link {
+        border-bottom: 1px solid $line;
+        min-height: 48px;
+    }
+    .header__link--accent {
+        margin: 0.8rem;
+    }
+    .experience__card {
+        grid-template-columns: 200px 1fr;
+    }
+    .pricing__grid,
+    .testimonials__grid {
+        grid-template-columns: 1fr;
+    }
+    .pricing__card {
+        min-height: 320px;
+    }
+    .contact {
+        grid-template-columns: 1fr;
+    }
+    .skills__grid {
+        gap: 2rem;
+    }
+}
+@media (max-width: 560px) {
+    .hero,
+    .section {
+        width: calc(100% - 2rem);
+    }
+    .hero {
+        min-height: 650px;
+    }
+    .hero__title {
+        font-size: clamp(3.2rem, 17vw, 5rem);
+    }
+    .hero__details div {
+        align-items: start;
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 0.5rem;
+    }
+    .experience__card {
+        align-items: start;
+        gap: 0.5rem;
+        grid-template-columns: 1fr;
+        padding: 1rem 0;
+    }
+    .skills__grid {
+        grid-template-columns: 1fr;
+    }
+    .works__item {
+        gap: 0.4rem 1rem;
+        grid-template-columns: 50px 1fr;
+        padding: 1rem 0;
+    }
+    .works__year,
+    .works__result {
+        grid-column: 2;
+    }
+    .works__result {
+        justify-self: start;
+        min-width: 140px;
+    }
+    .blog__item {
+        gap: 0.3rem 1rem;
+        grid-template-columns: 35px 1fr;
+    }
+    .blog__tag,
+    .blog__title,
+    .blog__date {
+        grid-column: 2;
+    }
+    .footer {
+        align-items: start;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }
