@@ -1,0 +1,75 @@
+@use "variables" as vars;
+
+body {
+    font-family: vars.$base-font-famility;
+}
+.header {
+    align-items: center;
+    background-color: vars.$menu-bg-color;
+    height: 60px;
+    padding: 10px 32px;
+    &__logo {
+        flex: 1;
+    }
+    &__menu {
+        // 要件：ヘッダーのアウターとしてのUI責任まで
+        flex: 4;
+        h1 {
+            vertical-align: middle;
+        }
+    }
+    &__btn {
+        flex: 1;
+    }
+}
+
+p,
+li {
+    color: vars.$text-color;
+}
+code {
+    &::before {
+        color: vars.$prompt-color;
+        content: "vars.$ ";
+    }
+}
+label {
+    color: vars.$prompt-color;
+}
+h1,
+h2,
+h3 {
+    color: vars.$h-color;
+    font-weight: bold;
+}
+.flex {
+    display: flex;
+}
+.fill-button {
+    background-color: vars.$prompt-color;
+    padding: 10px 18px;
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    height: fit-content;
+}
+
+.bottom-hr {
+    // 要件：セクションとしてのpaddingと底のhr
+}
+.code {
+    // 要件：タイトル上コードspanUI
+}
+
+// リスト関係
+.program-list {
+    // 要件：プログラムコンソールの見た目なリスト。UI特化
+}
+.faq-item {
+    // 要件：faqリストアイテムのUI特化。
+}
+
+// ドロップダウン
+.dropdown {
+    // 要件：ドロップダウン機能UI補助
+}

@@ -16,21 +16,22 @@
 </head>
 
 <body>
-    <header>
-        <div>
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+    <header class="header flex">
+        <div class="header__logo">
+            <h1>ISOMI@DEV</h1>
         </div>
         <div class="header__menu">
             <nav>
-                <ul>
-                    <li><a href="#">自己紹介</a></li>
-                    <li><a href="#">開発経験</a></li>
-                    <li><a href="#">技術スタック</a></li>
-                    <li><a href="#">ポートフォリオ</a></li>
-                    <li><a href="#">ご依頼いただける仕事内容</a></li>
-                    <li><a href="#">お問い合わせ</a></li>
+                <ul class="flex">
+                    <li><a href="#">実績</a></li>
+                    <li><a href="#">技術</a></li>
+                    <li><a href="#">料金</a></li>
+                    <li><a href="#">連絡</a></li>
                 </ul>
             </nav>
+        </div>
+        <div class="header__btn">
+            <button class="fill-button">>_ 相談する</button>
         </div>
     </header>
     <section name="introduction" class="bottom-hr">
@@ -38,11 +39,11 @@
         <h1>ISHIDA<br />TOMOYA</h1>
         <code class="code">cat profile.txt</code>
         <ul>
-            <li><span>役割:</span>フルスタックエンジニア（フリーランス）</li>
-            <li><span>経験年数:</span>８年</li>
-            <li><span>完遂案件数:</span></li>
-            <li><span>使用経験技術:</span><span>React</span>, <span>Typescript</span>, <span>Vue.js</span>, <span>Node.js</span>, <span>Laravel</span></li>
-            <li><span>稼働状況:</span>可能</li>
+            <li><label>役割:</label>フルスタックエンジニア（フリーランス）</li>
+            <li><label>経験年数:</label>８年</li>
+            <li><label>完遂案件数:</label></li>
+            <li><label>使用経験技術:</label><span>React</span>, <span>Typescript</span>, <span>Vue.js</span>, <span>Node.js</span>, <span>Laravel</span></li>
+            <li><label>稼働状況:</label>可能</li>
         </ul>
         <div class="flex">
             <button class="console_btn green">相談する</button>
