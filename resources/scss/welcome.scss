@@ -431,7 +431,7 @@ main::before {
 .skills__item {
     border: 1px solid $dim;
     color: $green;
-    font-size: 0.72rem;
+    font-size: 0.9rem;
     font-weight: 700;
     padding: 0.3rem 0.65rem;
 }
@@ -455,7 +455,7 @@ main::before {
     padding: 0;
 }
 .works__number {
-    font-size: 0.7rem;
+    font-size: 0.825rem;
 }
 .works__number::before {
     content: "[";
@@ -465,13 +465,13 @@ main::before {
 }
 .works__title {
     color: $green;
-    font-size: 0.92rem;
+    font-size: 1rem;
     font-weight: 700;
     margin: 0;
 }
 .works__description,
 .works__year {
-    font-size: 0.68rem;
+    font-size: 0.825rem;
     margin: 0;
 }
 .works__result {

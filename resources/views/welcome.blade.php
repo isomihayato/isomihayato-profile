@@ -32,30 +32,30 @@
     <main>
         <section class="hero" id="top">
             <div class="hero__main">
-                <p class="terminal-command">$ ./init --profile=ishida-tomoya --mode=fullstack</p>
+                <p class="terminal-command">$ ./profileInstall --profile=ishida-tomoya --mode=fullstack --lang=ja</p>
                 <h1 class="hero__title vt323-regular">ISHIDA<br>TOMOYA</h1>
                 <div class="hero__profile">
                     <p class="terminal-command">$ cat profile.txt</p>
                     <dl class="hero__details">
                         <div>
-                            <dt>role:</dt>
-                            <dd>Fullstack Engineer (Freelance)</dd>
+                            <dt>役割:</dt>
+                            <dd>フルスタックエンジニア (フリーランス)</dd>
                         </div>
                         <div>
-                            <dt>exp:</dt>
-                            <dd>8 years</dd>
+                            <dt>経験年数:</dt>
+                            <dd>8 年</dd>
                         </div>
                         <div>
-                            <dt>proj:</dt>
-                            <dd>50+ completed</dd>
+                            <dt>完遂案件数:</dt>
+                            <dd>20+ 件</dd>
                         </div>
                         <div>
-                            <dt>spec:</dt>
-                            <dd>React, TypeScript, Laravel, AWS</dd>
+                            <dt>使用経験技術:</dt>
+                            <dd>React, TypeScript, Laravel, AWS など</dd>
                         </div>
                         <div>
-                            <dt>stat:</dt>
-                            <dd><mark>AVAILABLE</mark></dd>
+                            <dt>稼働可否:</dt>
+                            <dd><mark>可能</mark></dd>
                         </div>
                     </dl>
                 </div>
@@ -73,20 +73,16 @@
             </div>
             <div class="experience__grid">
                 <article class="experience__card">
-                    <div class="experience__meta"><span>FRONTEND</span><strong>08Y</strong></div>
+                    <div class="experience__meta"><span>フロントエンド開発</span><strong>8年</strong></div>
                     <p>React / Next.jsを中心としたUI設計・実装。パフォーマンス最適化、E2Eテストまで一貫対応。</p>
                 </article>
                 <article class="experience__card experience__card--dark">
-                    <div class="experience__meta"><span>BACKEND</span><strong>08Y</strong></div>
+                    <div class="experience__meta"><span>バックエンド開発</span><strong>8年</strong></div>
                     <p>Laravel / Rails / Node.jsによるAPI・DB設計。保守性の高い業務システム構築が得意。</p>
                 </article>
                 <article class="experience__card experience__card--accent">
-                    <div class="experience__meta"><span>CLOUD / INFRA</span><strong>01Y</strong></div>
+                    <div class="experience__meta"><span>クラウド / インフラ</span><strong>1年</strong></div>
                     <p>AWS / GCPを活用したCI/CD・コンテナ化。運用を見据えた環境構築に対応。</p>
-                </article>
-                <article class="experience__card">
-                    <div class="experience__meta"><span>QUALITY</span><strong>08Y</strong></div>
-                    <p>Playwright / Jest / Seleniumによるテスト自動化。品質と開発速度の両立を支援。</p>
                 </article>
             </div>
         </section>
