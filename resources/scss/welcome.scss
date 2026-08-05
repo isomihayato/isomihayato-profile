@@ -318,9 +318,24 @@ main::before {
     margin: 0;
 }
 .hero__details mark {
+    animation: hero-status-blink 1.15s step-end infinite;
     background: $green;
     color: $bg;
     padding: 0 0.35rem;
+}
+@keyframes hero-status-blink {
+    0%,
+    55% {
+        background: $green;
+        color: $bg;
+        opacity: 1;
+    }
+    56%,
+    100% {
+        background: transparent;
+        color: $green;
+        opacity: 0.25;
+    }
 }
 .hero__actions {
     display: flex;
@@ -877,5 +892,8 @@ main::before {
     .header__logo-text::after {
         animation: none;
         display: none;
+    }
+    .hero__details mark {
+        animation: none;
     }
 }
