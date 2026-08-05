@@ -126,17 +126,18 @@
             </header>
             <p class="terminal-command">$ ls -la tech/</p>
             <div class="skills__grid">
-                @foreach ([
-                ['FRONTEND', ['React', 'TypeScript', 'Next.js', 'Vue.js', 'Sass / SCSS']],
-                ['BACKEND', ['Laravel', 'Ruby on Rails', 'Node.js', 'PHP', 'Python']],
-                ['INFRA', ['AWS', 'GCP', 'Docker', 'Kubernetes', 'Nginx']],
-                ['DB / TEST', ['MySQL', 'PostgreSQL', 'Redis', 'Playwright', 'Jest']],
-                ] as [$category, $items])
-                <div class="skills__group">
-                    <h3 class="skills__category">{{ $category }}</h3>
-                    <ul class="skills__list">@foreach ($items as $item)<li class="skills__item">{{ $item }}</li>@endforeach</ul>
-                </div>
-                @endforeach
+                @forelse ($technologyFields as $technologyField)
+                    <div class="skills__group">
+                        <h3 class="skills__category">{{ $technologyField->name }}</h3>
+                        <ul class="skills__list">
+                            @foreach ($technologyField->experiencedTechnologies as $experiencedTechnology)
+                                <li class="skills__item">{{ $experiencedTechnology->name }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @empty
+                    <p class="skills__empty">No technology records found.</p>
+                @endforelse
             </div>
         </section>
 

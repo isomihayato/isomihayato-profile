@@ -18,6 +18,12 @@
                     <x-nav-link href="{{ route('portfolios.index') }}" :active="request()->routeIs('portfolios.*')">
                         ポートフォリオ管理
                     </x-nav-link>
+                    <x-nav-link href="{{ route('technology-fields.index') }}" :active="request()->routeIs('technology-fields.*')">
+                        分野管理
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('experienced-technologies.index') }}" :active="request()->routeIs('experienced-technologies.*')">
+                        経験技術管理
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -147,6 +153,12 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('portfolios.index') }}" :active="request()->routeIs('portfolios.*')">
                 ポートフォリオ管理
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('technology-fields.index') }}" :active="request()->routeIs('technology-fields.*')">
+                分野管理
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('experienced-technologies.index') }}" :active="request()->routeIs('experienced-technologies.*')">
+                経験技術管理
             </x-responsive-nav-link>
         </div>
 

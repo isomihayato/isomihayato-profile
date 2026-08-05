@@ -435,6 +435,12 @@ main::before {
     font-weight: 700;
     padding: 0.3rem 0.65rem;
 }
+.skills__empty {
+    color: $dim;
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 2rem 0;
+}
 
 .works__list {
     margin-top: 1.5rem;
