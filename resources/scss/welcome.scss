@@ -38,7 +38,7 @@ main {
     background: $bg;
     color: $dim;
     font-family: $mono;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.75;
     min-height: 100vh;
     text-shadow: 0 0 7px rgba(105, 255, 79, 0.2);
@@ -159,7 +159,7 @@ main::before {
 }
 .terminal-command {
     color: $dim;
-    font-size: 0.75rem;
+    font-size: 1.1rem;
     letter-spacing: 0.08em;
     margin: 0 0 1rem;
 }
@@ -385,17 +385,15 @@ main::before {
 .experience__meta {
     color: $green;
     display: grid;
-    font-size: 0.72rem;
     font-weight: 700;
     grid-template-columns: 1fr 50px;
     letter-spacing: 0.1em;
 }
 .experience__meta strong {
     color: $dim;
-    font-size: 0.75rem;
 }
 .experience__card p {
-    font-size: 0.76rem;
+    font-size: 1rem;
     margin: 0;
 }
 
@@ -578,7 +576,7 @@ main::before {
 .testimonials__card::before {
     color: $dim;
     content: "$ tail -1 reviews.log";
-    font-size: 0.65rem;
+    font-size: 1.1rem;
     margin-bottom: 1.5rem;
 }
 .testimonials__stars {
@@ -619,18 +617,18 @@ main::before {
 }
 .process__number {
     color: $green;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 .process__label {
     color: $green;
-    font-size: 0.68rem;
+    font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     margin: 0;
 }
 .process__title {
     display: inline;
-    font-size: 0.85rem;
+    font-size: 1rem;
     font-weight: 400;
     margin: 0;
 }
