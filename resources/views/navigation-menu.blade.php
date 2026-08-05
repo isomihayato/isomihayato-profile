@@ -24,6 +24,9 @@
                     <x-nav-link href="{{ route('experienced-technologies.index') }}" :active="request()->routeIs('experienced-technologies.*')">
                         経験技術管理
                     </x-nav-link>
+                    <x-nav-link href="{{ route('contact-inquiries.index') }}" :active="request()->routeIs('contact-inquiries.*')">
+                        お問い合わせ管理
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -159,6 +162,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('experienced-technologies.index') }}" :active="request()->routeIs('experienced-technologies.*')">
                 経験技術管理
+            </x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('contact-inquiries.index') }}" :active="request()->routeIs('contact-inquiries.*')">
+                お問い合わせ管理
             </x-responsive-nav-link>
         </div>
 

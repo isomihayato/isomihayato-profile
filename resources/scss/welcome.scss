@@ -731,6 +731,16 @@ main::before {
     display: grid;
     gap: 1.2rem;
 }
+.contact__notice {
+    border: 1px solid $green;
+    color: $green;
+    margin: 0;
+    padding: 0.7rem;
+}
+.contact__error {
+    color: #ff6b6b;
+    font-size: 0.68rem;
+}
 .contact__field {
     color: $dim;
     display: grid;

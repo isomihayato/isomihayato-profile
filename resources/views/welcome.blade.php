@@ -275,11 +275,12 @@
                     </div>
                 </dl>
             </div>
-            <form class="contact__form" action="/contact" method="POST">@csrf
-                <label class="contact__field"><span>お名前</span><input class="contact__input" type="text" name="name" required></label>
-                <label class="contact__field"><span>メールアドレス</span><input class="contact__input" type="email" name="email" required></label>
-                <label class="contact__field"><span>件名</span><input class="contact__input" type="text" name="subject"></label>
-                <label class="contact__field"><span>メッセージ</span><textarea class="contact__input contact__input--textarea" name="message" required></textarea></label>
+            <form class="contact__form" action="{{ route('contact.store') }}" method="POST">@csrf
+                @if (session('contact_status')) <p class="contact__notice">>_ {{ session('contact_status') }}</p> @endif
+                <label class="contact__field"><span>お名前</span><input class="contact__input" type="text" name="name" value="{{ old('name') }}" required>@error('name')<small class="contact__error">{{ $message }}</small>@enderror</label>
+                <label class="contact__field"><span>メールアドレス</span><input class="contact__input" type="email" name="email" value="{{ old('email') }}" required>@error('email')<small class="contact__error">{{ $message }}</small>@enderror</label>
+                <label class="contact__field"><span>件名</span><input class="contact__input" type="text" name="subject" value="{{ old('subject') }}">@error('subject')<small class="contact__error">{{ $message }}</small>@enderror</label>
+                <label class="contact__field"><span>メッセージ</span><textarea class="contact__input contact__input--textarea" name="message" required>{{ old('message') }}</textarea>@error('message')<small class="contact__error">{{ $message }}</small>@enderror</label>
                 <button class="button button--dark contact__submit" type="submit">送信する →</button>
             </form>
         </section>
