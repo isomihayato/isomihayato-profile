@@ -15,7 +15,7 @@
 
 <body class="site">
     <header class="header">
-        <a class="header__logo" href="#top">ISOMI@DEV</a>
+        <a class="header__logo" href="#top"><span class="header__logo-text">ISOMI@DEV</span></a>
         <button class="header__toggle" type="button" aria-expanded="false" aria-controls="global-navigation">
             <span class="header__toggle-line"></span><span class="header__toggle-line"></span>
             <span class="header__toggle-label">MENU</span>

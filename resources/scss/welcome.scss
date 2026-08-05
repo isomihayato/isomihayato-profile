@@ -212,6 +212,41 @@ main::before {
     letter-spacing: 0.12em;
     padding: 0 2rem;
 }
+.header__logo-text {
+    animation: header-logo-typing 1.25s steps(9, end) 0.25s both;
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+}
+.header__logo-text::after {
+    animation: header-logo-cursor 0.7s step-end 0.25s 4;
+    background: $green;
+    content: "";
+    height: 1em;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.12em;
+}
+@keyframes header-logo-typing {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+@keyframes header-logo-cursor {
+    0%,
+    100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
 .header__nav {
     align-items: stretch;
     display: flex;
@@ -834,5 +869,13 @@ main::before {
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
+    }
+    .header__logo-text {
+        animation: none;
+        clip-path: none;
+    }
+    .header__logo-text::after {
+        animation: none;
+        display: none;
     }
 }
