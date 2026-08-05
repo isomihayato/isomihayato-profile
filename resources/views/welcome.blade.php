@@ -97,30 +97,25 @@
             </header>
             <p class="terminal-command">$ cat projects.log | head -10</p>
             <div class="works__list">
-                <article class="works__item"><span class="works__number">001</span>
-                    <div class="works__content">
-                        <h3 class="works__title">Webサービス開発・改善</h3>
-                        <p class="works__description">Laravel / React　設計・実装・運用</p>
-                    </div><time class="works__year">2025</time><strong class="works__result">継続改善</strong>
-                </article>
-                <article class="works__item works__item--accent"><span class="works__number">002</span>
-                    <div class="works__content">
-                        <h3 class="works__title">業務システム刷新</h3>
-                        <p class="works__description">要件整理からリリースまで一貫対応</p>
-                    </div><time class="works__year">2024</time><strong class="works__result">工数削減</strong>
-                </article>
-                <article class="works__item"><span class="works__number">003</span>
-                    <div class="works__content">
-                        <h3 class="works__title">テスト自動化基盤</h3>
-                        <p class="works__description">Playwright E2E / CI連携</p>
-                    </div><time class="works__year">2024</time><strong class="works__result">品質向上</strong>
-                </article>
-                <article class="works__item works__item--dark"><span class="works__number">004</span>
-                    <div class="works__content">
-                        <h3 class="works__title">クラウド環境構築</h3>
-                        <p class="works__description">AWS × Docker × CI/CD</p>
-                    </div><time class="works__year">2023</time><strong class="works__result">運用最適化</strong>
-                </article>
+                @forelse ($portfolios as $portfolio)
+                    <article class="works__item">
+                        <span class="works__number">{{ str_pad($loop->iteration, 3, '0', STR_PAD_LEFT) }}</span>
+                        <div class="works__content">
+                            <h3 class="works__title">
+                                @if ($portfolio->link_url)
+                                    <a href="{{ $portfolio->link_url }}" target="_blank" rel="noopener noreferrer">{{ $portfolio->title }}</a>
+                                @else
+                                    {{ $portfolio->title }}
+                                @endif
+                            </h3>
+                            <p class="works__description">{{ $portfolio->summary }}</p>
+                        </div>
+                        <time class="works__year" datetime="{{ $portfolio->year }}">{{ $portfolio->year }}</time>
+                        <strong class="works__result">{{ $portfolio->business_category }}</strong>
+                    </article>
+                @empty
+                    <p class="works__empty">No portfolio records found.</p>
+                @endforelse
             </div>
         </section>
 
