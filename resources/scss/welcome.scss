@@ -1,9 +1,17 @@
+@font-face {
+    font-family: "Perfect DOS VGA 437";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/Perfect%20DOS%20VGA%20437.ttf") format("truetype");
+}
+
 $bg: #010800;
 $panel: #031003;
-$green: #69ff4f;
-$dim: #69ff4f;
-$line: #69ff4f;
-$mono: "Courier New", "SFMono-Regular", monospace;
+$green: rgb(57, 255, 20);
+$dim: rgb(57, 255, 20);
+$line: rgb(57, 255, 20);
+$mono: VT323, monospace;
 
 *,
 *::before,
@@ -49,12 +57,100 @@ main::before {
     position: fixed;
     z-index: 99;
 }
+.ibm-plex-mono-thin {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.ibm-plex-mono-extralight {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.ibm-plex-mono-light {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.ibm-plex-mono-regular {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.ibm-plex-mono-medium {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.ibm-plex-mono-semibold {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.ibm-plex-mono-bold {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.ibm-plex-mono-thin-italic {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.ibm-plex-mono-extralight-italic {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.ibm-plex-mono-light-italic {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.ibm-plex-mono-regular-italic {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.ibm-plex-mono-medium-italic {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.ibm-plex-mono-semibold-italic {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.ibm-plex-mono-bold-italic {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 700;
+    font-style: italic;
+}
+.vt323-regular {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
 .site::after {
-    background: radial-gradient(
-        ellipse at center,
-        transparent 45%,
-        rgba(0, 0, 0, 0.68) 100%
-    );
+    // background: radial-gradient(
+    //     ellipse at center,
+    //     transparent 45%,
+    //     rgba(0, 0, 0, 0.68) 100%
+    // );
     content: "";
     inset: 0;
     pointer-events: none;
@@ -100,6 +196,7 @@ main::before {
     background: rgba(1, 8, 0, 0.96);
     border-bottom: 1px solid $line;
     display: flex;
+    font-family: "Perfect DOS VGA 437", $mono;
     height: 64px;
     position: sticky;
     top: 0;
@@ -162,7 +259,6 @@ main::before {
 }
 .hero__title {
     color: $green;
-    font-family: $mono;
     font-size: clamp(4rem, 10vw, 7.5rem);
     letter-spacing: 0.08em;
     line-height: 1.05;
