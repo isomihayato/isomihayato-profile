@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="default">
 
 <head>
     <meta charset="utf-8">
@@ -10,8 +10,19 @@
     <link rel="preload" href="/fonts/Perfect%20DOS%20VGA%20437.ttf" as="font" type="font/ttf" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=VT323&display=block" rel="stylesheet">
     <title>ISHIDA TOMOYA — Fullstack Engineer</title>
+    <script>
+        (() => {
+            try {
+                const theme = localStorage.getItem('portfolio-theme');
+                document.documentElement.dataset.theme = theme === 'terminal' ? 'terminal' : 'default';
+            } catch (_) {
+                document.documentElement.dataset.theme = 'default';
+            }
+        })();
+    </script>
     <style>
-        html, body { background: #010800; color: rgb(57, 255, 20); }
+        html[data-theme="default"], html[data-theme="default"] body { background: #f6f8fc; color: #172033; }
+        html[data-theme="terminal"], html[data-theme="terminal"] body { background: #010800; color: rgb(57, 255, 20); }
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -19,6 +30,13 @@
 <body class="site">
     <header class="header">
         <a class="header__logo" href="#top"><span class="header__logo-text">ISOMI@DEV</span></a>
+        <div class="header__theme">
+            <label class="header__theme-label" for="theme-switcher">DESIGN</label>
+            <select class="header__theme-select" id="theme-switcher" aria-label="デザインを切り替える">
+                <option value="default">Default</option>
+                <option value="terminal">CRT Terminal</option>
+            </select>
+        </div>
         <button class="header__toggle" type="button" aria-expanded="false" aria-controls="global-navigation">
             <span class="header__toggle-line"></span><span class="header__toggle-line"></span>
             <span class="header__toggle-label">MENU</span>
@@ -35,8 +53,15 @@
     <main>
         <section class="hero" id="top">
             <div class="hero__main">
+                <p class="hero__eyebrow">FREELANCE FULLSTACK ENGINEER</p>
                 <p class="terminal-command">$ ./profileInstall --profile=ishida-tomoya --mode=fullstack --lang=ja</p>
                 <h1 class="hero__title vt323-regular">ISHIDA<br>TOMOYA</h1>
+                <p class="hero__casual-lead">つくる人と、使う人。その間に立って、<br>アイデアを使いやすいWebサービスにします。</p>
+                <ul class="hero__casual-tags" aria-label="得意分野">
+                    <li>Webアプリ開発</li>
+                    <li>UI / UX</li>
+                    <li>業務改善</li>
+                </ul>
                 <div class="hero__profile">
                     <p class="terminal-command">$ cat profile.txt</p>
                     <dl class="hero__details">
@@ -63,10 +88,16 @@
                     </dl>
                 </div>
                 <div class="hero__actions">
-                    <a class="button button--terminal" href="#contact">>_ 相談する</a>
-                    <a class="button button--terminal" href="#works">>_ 実績を見る</a>
+                    <a class="button button--terminal" href="#contact"><span class="button__terminal-label">>_ 相談する</span><span class="button__default-label">まずは相談する</span></a>
+                    <a class="button button--terminal" href="#works"><span class="button__terminal-label">>_ 実績を見る</span><span class="button__default-label">実績を見る</span></a>
                 </div>
             </div>
+            <aside class="hero__casual-card" aria-label="プロフィール概要">
+                <div class="hero__casual-avatar" aria-hidden="true"><span>IT</span></div>
+                <p class="hero__casual-hello">こんにちは！</p>
+                <p class="hero__casual-copy">設計から実装・運用まで、相談しやすい開発パートナーとして伴走します。</p>
+                <div class="hero__casual-status"><span></span>新しいご相談を受付中</div>
+            </aside>
         </section>
 
         <section class="experience section" id="experience">

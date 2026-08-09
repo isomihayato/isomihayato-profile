@@ -1,6 +1,23 @@
 import "./bootstrap";
 import "../scss/welcome.scss";
 
+const themeSwitcher = document.querySelector("#theme-switcher");
+const currentTheme = document.documentElement.dataset.theme || "default";
+
+if (themeSwitcher) {
+    themeSwitcher.value = currentTheme;
+    themeSwitcher.addEventListener("change", () => {
+        const theme = themeSwitcher.value === "terminal" ? "terminal" : "default";
+        document.documentElement.dataset.theme = theme;
+
+        try {
+            localStorage.setItem("portfolio-theme", theme);
+        } catch (_) {
+            // Storage may be unavailable in private browsing environments.
+        }
+    });
+}
+
 document.querySelectorAll(".faq__question").forEach((button) => {
     button.addEventListener("click", () => {
         const item = button.closest(".faq__item");
